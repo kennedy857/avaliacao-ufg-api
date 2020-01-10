@@ -27,4 +27,8 @@ public class MatriculaService {
 		return matriculaRepository.findByAluno(aluno);
 	}
 	
+	public List<Matricula> buscarPorCurso(Curso curso) {
+		return matriculaRepository.findByCurso(curso);
+	}
+	
 }

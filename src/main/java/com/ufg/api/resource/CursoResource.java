@@ -20,18 +20,23 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ufg.api.dto.CursoAlunoDTO;
 import com.ufg.api.model.Curso;
 import com.ufg.api.service.CursoService;
+import com.ufg.api.service.MatriculaService;
 
 @RestController
 @RequestMapping("/cursos")
 public class CursoResource {
 
 	@Autowired
-	private CursoService cursoService;
+	CursoService cursoService;
 	
 	
 	//@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO')")
 	@GetMapping()
 	public  List<Curso> litarTodos() throws Exception {
+		return cursoService.listarTodos();
+	}
+	@GetMapping("/publicos")
+	public  List<Curso> litarTodosPublico() throws Exception {
 		return cursoService.listarTodos();
 	}
 	@PostMapping
@@ -43,7 +48,7 @@ public class CursoResource {
 	@DeleteMapping("/{codigo}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
-	public void remover(@PathVariable Integer codigo, HttpServletResponse response) {
+	public void remover(@PathVariable Integer codigo, HttpServletResponse response) throws Exception {
 		cursoService.deletar(codigo);
 	}
 	

@@ -29,7 +29,7 @@ public class OAuthSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/usuarios/**");
+		web.ignoring().antMatchers("/usuarios/**","/cursos/publicos/*");
 	}
 
 	@Bean

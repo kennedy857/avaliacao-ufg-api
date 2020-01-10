@@ -32,7 +32,13 @@ public class CursoService {
 		return cursoRepository.save(curso);
 	}
 	
-	public void deletar(Integer id) {
+	public void deletar(Integer id)  throws Exception {
+		Optional<Curso> cursoOptional = cursoRepository.findById(id);
+		Curso curso = cursoOptional.orElseThrow(() -> new UsernameNotFoundException("Erro - curso inexistente"));
+		
+		if(!matriculaService.buscarPorCurso(curso).isEmpty()) {
+			throw new Exception("Erro - Existe matricula(s) ativa(s) para este curso.");
+		}
 		cursoRepository.deleteById(id);
 	}
 	

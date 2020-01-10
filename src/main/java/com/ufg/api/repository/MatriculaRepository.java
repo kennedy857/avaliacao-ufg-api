@@ -12,4 +12,5 @@ public interface MatriculaRepository extends JpaRepository<Matricula, Integer>  
 	
 	List<Matricula> findByAlunoAndCurso(Usuario aluno, Curso curso);
 	List<Matricula> findByAluno(Usuario aluno);
+	List<Matricula> findByCurso(Curso curso);
 }
