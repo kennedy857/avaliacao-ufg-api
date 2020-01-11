@@ -22,6 +22,10 @@ import com.ufg.api.model.Curso;
 import com.ufg.api.service.CursoService;
 import com.ufg.api.service.MatriculaService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api
 @RestController
 @RequestMapping("/cursos")
 public class CursoResource {
@@ -31,6 +35,7 @@ public class CursoResource {
 	
 	
 	//@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO')")
+	@ApiOperation("Busca todos os cursos")
 	@GetMapping()
 	public  List<Curso> litarTodos() throws Exception {
 		return cursoService.listarTodos();
