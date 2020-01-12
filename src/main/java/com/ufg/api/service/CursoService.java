@@ -28,6 +28,11 @@ public class CursoService {
 		return cursoRepository.findAll();
 	}
 	
+	public Curso consultarPorId(Integer id){
+		Optional<Curso> cursoOptional = cursoRepository.findById(id);
+		return cursoOptional.orElseThrow(() -> new UsernameNotFoundException("Erro - curso inexistente"));
+	}
+	
 	public Curso salvar(Curso curso) {
 		return cursoRepository.save(curso);
 	}

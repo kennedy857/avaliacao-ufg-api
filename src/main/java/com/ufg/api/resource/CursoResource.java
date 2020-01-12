@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ufg.api.dto.CursoAlunoDTO;
 import com.ufg.api.model.Curso;
 import com.ufg.api.service.CursoService;
-import com.ufg.api.service.MatriculaService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -32,18 +31,28 @@ public class CursoResource {
 
 	@Autowired
 	CursoService cursoService;
+	/*
+	 * @Autowired S3Service s3Service;
+	 */
 	
 	
-	//@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO')")
 	@ApiOperation("Busca todos os cursos")
 	@GetMapping()
 	public  List<Curso> litarTodos() throws Exception {
 		return cursoService.listarTodos();
 	}
+	
 	@GetMapping("/publicos")
 	public  List<Curso> litarTodosPublico() throws Exception {
 		return cursoService.listarTodos();
 	}
+	
+	@ApiOperation("Busca apenas um curso, pelo seu CODIGO")
+	@GetMapping("/{codigo}")
+	public Curso buscarProId(@PathVariable Integer codigo, HttpServletResponse response) throws Exception {
+		return cursoService.consultarPorId(codigo);
+	}
+	
 	@PostMapping
 	public ResponseEntity<Curso> criar(@RequestBody Curso curso, HttpServletResponse response) {
 		Curso cursoSalvo = cursoService.salvar(curso);
