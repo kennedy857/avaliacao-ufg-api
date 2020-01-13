@@ -8,7 +8,7 @@ import com.ufg.api.model.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
-	public Optional<Usuario> findByEmail(String email);
+	public Optional<Usuario> findByCpf(String cpf);
 	
 	
 }

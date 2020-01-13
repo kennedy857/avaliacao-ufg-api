@@ -20,9 +20,19 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
-	private String email;
+	private String cpf;
 	private String senha;
+	private String nome;
+	private String matricula;
 	private boolean admin;
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
 
 	public Long getCodigo() {
 		return codigo;
@@ -32,12 +42,20 @@ public class Usuario {
 		this.codigo = codigo;
 	}
 
-	public String getEmail() {
-		return email;
+		public String getCpf() {
+		return cpf;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getSenha() {
